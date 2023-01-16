@@ -1,0 +1,56 @@
+//singly circular linked list Insert Last
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node *next;
+};
+
+typedef int BOOL;
+#define TRUE 1
+#define FALSE 0
+BOOL DeleteLast(struct node**,struct node**);
+
+int main()
+{
+	struct node *head=NULL;
+	struct node *tail=NULL;
+	
+	InsertFirst(&head,&tail,51);
+	InsertFirst(&head,&tail,41);
+	InsertFirst(&head,&tail,31);
+	InsertFirst(&head,&tail,21);
+	InsertFirst(&head,&tail,11);
+	
+	DeleteLast(&head,&tail);
+	Display(head,tail);
+	
+	return 0;
+   
+}
+
+BOOL DeleteLast(struct node **first,struct node **last)
+{
+	if((*first==NULL)&&(*last==NULL))
+	{
+		return FALSE;
+	}
+	else if(*first==(*last))
+	{
+		free(*last);
+		*first=(*last)=NULL;
+	}
+	else
+	{
+		struct node *temp=(*first);
+		while(temp->next!=*last)
+		{
+			temp=temp->next;
+		}
+		free(*last);
+		*last=temp;
+		*last->next=(*first);
+	}
+	return TRUE;
+}
