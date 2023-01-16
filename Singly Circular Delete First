@@ -1,0 +1,36 @@
+//Singly Circular Delete first
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+	int data;
+	struct node *next;
+}
+
+typedef int BOOL;
+#define TRUE 1
+#define FALSE 0
+
+BOOL DeleteFirst(struct node**,struct node**);
+
+int main();
+{
+	struct node *head=NULL;
+	struct node *tail=NULL;
+	
+	InsertFirst(&head, &tail, NULL)
+	
+	InsertFirst(&head, &tail,51)
+	InsertFirst(&head, &tail,41)
+	InsertFirst(&head, &tail,31)
+	InsertFirst(&head, &tail,21)
+	InsertFirst(&head, &tail,11)
+	Display(head,tail);
+	
+	DeleteFirst(&head&tail);
+	Display(head,tail)
+	
+	return 0;
+}
