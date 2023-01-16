@@ -1,0 +1,55 @@
+//singly circular linked list = insert first
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+	int data;
+	struct node *next;
+}
+typedef int BOOL;
+#define TRUE 1
+#define FALSE 0
+
+BOOL InsertFirst(struct node**,struct node**,int);
+
+int main()
+{
+	struct node*head=NULL;
+	struct node *tail=NULL;
+	
+	InsertFirst(&head,&tail,51);
+	InsertFirst(&head,&tail,41);
+	InsertFirst(&head,&tail,31);
+	InsertFirst(&head,&tail,21);
+	InsertFirst(&head,&tail,11);
+	Display(head,tail);
+	return 0;
+}
+
+BOOL InsertFirst(struct node **first,struct node **last,int value)
+{
+	struct node *newnode=NULL;
+	newnode=(struct node*)malloc(sizeof(struct node));
+	
+	if(newnode==NULL)
+	{
+		return FALSE;
+	}
+	newnode->data=value;
+	newnode->next=NULL;
+	
+	if((*first==NULL)&&(*last==NULL))
+	{
+		*first=(*last)=newnode;
+		*last->next=(*first);
+	}
+	else
+	{
+		newnode->next =*first;
+		*first= newnode;
+		*last ->next = *first
+	}
+	return TRUE;
+}
